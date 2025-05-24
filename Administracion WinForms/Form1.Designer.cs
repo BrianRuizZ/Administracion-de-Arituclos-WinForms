@@ -51,10 +51,6 @@
             ArtBox.SuspendLayout();
             SuspendLayout();
             // 
-            // bindingSource1
-            // 
-            bindingSource1.CurrentChanged += bindingSource1_CurrentChanged;
-            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;

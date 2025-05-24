@@ -12,21 +12,24 @@ namespace Administracion_WinForms
 
         }
 
-        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        private MySqlConnection conn;
+        private void CargarBD()
         {
+            var connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
 
+             conn = new MySqlConnection(connectionString);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void BorrarDatos()
         {
-
+            textNombre.Clear();
+            textPrecio.Clear();
+            textStock.Clear();
         }
 
         private void CargarDatos()
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            CargarBD();
             {
                 try
                 {
@@ -67,8 +70,7 @@ namespace Administracion_WinForms
                 return;
             }
 
-            var connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            CargarBD();
 
             {
                 try
@@ -83,9 +85,7 @@ namespace Administracion_WinForms
                     int result = cmd.ExecuteNonQuery();
                     if (result > 0)
                     {
-                        textNombre.Clear();
-                        textPrecio.Clear();
-                        textStock.Clear();
+                        BorrarDatos();
                         CargarDatos();
                     }
                     else
@@ -104,9 +104,10 @@ namespace Administracion_WinForms
         private void button2_Click(object sender, EventArgs e)
         {
             {
+                // Verifico si hay una fila seleccionada
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-
+                    // Consigo la id del articulo seleccionado
                     int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["codigo"].Value);
 
                     var confirmResult = MessageBox.Show("¿Seguro que quieres eliminar el articulo?",
@@ -121,6 +122,7 @@ namespace Administracion_WinForms
                         {
                             try
                             {
+                                // Abro la conexion y elimino el articulo segun la id seleccionada
                                 conn.Open();
                                 string query = "DELETE FROM articulos WHERE idArticulos = @id";
                                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -157,7 +159,7 @@ namespace Administracion_WinForms
             CargarDatos();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void EditarLosDatos()
         {
             button1.Visible = false;
             buttonEditar.Visible = true;
@@ -171,12 +173,18 @@ namespace Administracion_WinForms
             }
 
             {
+                // Verifico si hay una fila seleccionada y cargo los datos.
                 DataGridViewRow fila = dataGridView1.SelectedRows[0];
 
                 textNombre.Text = fila.Cells["Articulo"].Value?.ToString();
                 textPrecio.Text = fila.Cells["Valor"].Value?.ToString();
                 textStock.Text = fila.Cells["Stock"].Value?.ToString();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            EditarLosDatos();
         }
 
         private void buttonAgregarART_Click(object sender, EventArgs e)
@@ -187,6 +195,7 @@ namespace Administracion_WinForms
             }
             else
             {
+                BorrarDatos();
                 ArtBox.Visible = true;
             }
 
@@ -194,21 +203,19 @@ namespace Administracion_WinForms
         private void ButtonCancelar_Click_1(object sender, EventArgs e)
         {
             ArtBox.Visible = false;
-            textNombre.Clear();
-            textPrecio.Clear();
-            textStock.Clear();
+            BorrarDatos();
             buttonEditar.Visible = false;
             button1.Visible = true;
         }
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
+            // Consigo la id del articulo seleccionado
             int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["codigo"].Value);
-            string connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            CargarBD();
 
             {
+                // Abro la conexion y actualizo los datos
                 conn.Open();
                 string query = "UPDATE articulos SET nombre = @nombre, precio = @precio, stock = @stock WHERE idArticulos = @id";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -220,6 +227,7 @@ namespace Administracion_WinForms
 
                 int resultado = cmd.ExecuteNonQuery();
 
+                // Si se actualizó el articulo, lo muestro en el datagridview
                 if (resultado > 0)
                 {
                     CargarDatos();
@@ -236,24 +244,7 @@ namespace Administracion_WinForms
 
         private void GridDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            button1.Visible = false;
-            buttonEditar.Visible = true;
-            if (ArtBox.Visible)
-            {
-                ArtBox.Visible = false;
-            }
-            else
-            {
-                ArtBox.Visible = true;
-            }
-
-            {
-                DataGridViewRow fila = dataGridView1.SelectedRows[0];
-
-                textNombre.Text = fila.Cells["Articulo"].Value?.ToString();
-                textPrecio.Text = fila.Cells["Valor"].Value?.ToString();
-                textStock.Text = fila.Cells["Stock"].Value?.ToString();
-            }
+            EditarLosDatos();
         }
     }
 }
