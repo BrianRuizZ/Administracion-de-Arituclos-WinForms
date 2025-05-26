@@ -4,9 +4,9 @@ using System.Data;
 namespace Administracion_WinForms
 
 {
-    public partial class Form1 : Form
+    public partial class Articulos : Form
     {
-        public Form1()
+        public Articulos()
         {
             InitializeComponent();
 
@@ -16,8 +16,7 @@ namespace Administracion_WinForms
         private void CargarBD()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-
-             conn = new MySqlConnection(connectionString);
+            conn = new MySqlConnection(connectionString);
         }
 
         private void BorrarDatos()
@@ -62,8 +61,6 @@ namespace Administracion_WinForms
             string precio = textPrecio.Text;
             string stock = textStock.Text;
 
-
-
             if (string.IsNullOrWhiteSpace(nombre))
             {
                 MessageBox.Show("Completá los campos.");
@@ -72,7 +69,7 @@ namespace Administracion_WinForms
 
             CargarBD();
 
-            {
+            { 
                 try
                 {
                     conn.Open();
@@ -131,7 +128,6 @@ namespace Administracion_WinForms
 
                                 if (resultado > 0)
                                 {
-                                    MessageBox.Show("Articulo eliminado.");
                                     CargarDatos();
                                 }
                                 else
@@ -245,6 +241,82 @@ namespace Administracion_WinForms
         private void GridDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             EditarLosDatos();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            // Abro la ventana de login
+            Form_Login UsarVentana = new Form_Login();
+            UsarVentana.ShowDialog();
+            LabelUsuario.Text = Sesion.NombreUsuario;
+        }
+
+        private void parametrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Abro la ventana de parametros
+            Form_Parametros UsarVentana = new Form_Parametros();
+            UsarVentana.ShowDialog();
+        }
+
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            // Abro la ventana de usuario
+            Form_Usuario UserVentana = new Form_Usuario();
+            UserVentana.ShowDialog();
+
+        }
+
+        private void listaDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Abro la ventana de lista de usuarios
+            Form_ListaUsuarios UsarVentana = new Form_ListaUsuarios();
+            UsarVentana.ShowDialog();
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Cerrar sesión y limpiar los datos de sesión
+            Sesion.NombreUsuario = string.Empty;
+            Sesion.IdUsuario = 0;
+            LabelUsuario.Text = Sesion.NombreUsuario;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            {
+                CargarBD();
+                {
+                    try
+                    {
+                        conn.Open();
+
+                        // Obtengo el texto de la búsqueda y lo uso para filtrar los artículos
+                        string busqueda = BuscarBox.Text;
+
+                        string query = "SELECT idArticulos AS codigo, nombre AS Articulo, precio AS Valor, stock AS Stock " +
+                        "FROM articulos WHERE nombre LIKE LOWER(@busqueda)";
+
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@busqueda", busqueda + "%");
+
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+
+                        dataGridView1.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar los datos: " + ex.Message);
+                    }
+                }
+            }
         }
     }
 }
