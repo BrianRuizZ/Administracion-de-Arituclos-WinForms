@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # Configuración local 
 .app.config
+/Administracion WinForms/app.config
