@@ -45,15 +45,42 @@ namespace Administracion_WinForms
                 ErrorContraseña.Text = "Por favor, complete todos los campos.";
                 return;
             }
+            else
+                ErrorNombre.Text = "";
+                ErrorContraseña.Text = "";
 
             if (textBox2.Text != textBox3.Text)
             {
                 ErrorConfContraseña.Text = "Las contraseñas no coinciden.";
                 return;
             }
+            else
+                ErrorConfContraseña.Text = "";
 
-            CargarBD();
+                CargarBD();
             conn.Open();
+
+            try
+            {
+                // Verificar si el usuario ya existe
+                string queryCheck = "SELECT COUNT(*) FROM usuarios WHERE usuario = @usuario";
+                MySqlCommand cmdCheck = new MySqlCommand(queryCheck, conn);
+                cmdCheck.Parameters.AddWithValue("@usuario", usuario);
+                int count = Convert.ToInt32(cmdCheck.ExecuteScalar());
+                if (count > 0)
+                {
+                    ErrorNombre.Text = "El usuario ya existe.";
+                    return;
+                }
+                else
+                    ErrorNombre.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar el usuario: " + ex.Message);
+                return;
+            }
+                  
             string query = "INSERT INTO usuarios (usuario, contraseña) VALUES (@usuario, @contraseñaHasheada)";
 
             {

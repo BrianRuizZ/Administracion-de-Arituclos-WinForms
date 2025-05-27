@@ -57,7 +57,7 @@
             groupBox1.Controls.Add(textBox1);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(409, 201);
+            groupBox1.Size = new Size(409, 211);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Crear Usuario";
@@ -93,7 +93,7 @@
             // 
             button1.BackColor = Color.DarkSeaGreen;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(150, 140);
+            button1.Location = new Point(150, 150);
             button1.Name = "button1";
             button1.Size = new Size(90, 39);
             button1.TabIndex = 7;
