@@ -16,19 +16,18 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `articulos`
+-- Table structure for table `usuarios`
 --
 
-DROP TABLE IF EXISTS `articulos`;
+DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `articulos` (
-  `idArticulos` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
-  `precio` decimal(10,2) DEFAULT NULL,
-  `stock` int DEFAULT NULL,
-  PRIMARY KEY (`idArticulos`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='\n';
+CREATE TABLE `usuarios` (
+  `idUsuarios` int NOT NULL AUTO_INCREMENT,
+  `Usuario` varchar(45) NOT NULL,
+  `Contraseña` varchar(255) NOT NULL,
+  PRIMARY KEY (`idUsuarios`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
