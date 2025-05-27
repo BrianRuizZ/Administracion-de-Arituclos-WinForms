@@ -1,6 +1,8 @@
 using System.Configuration;
 using MySql.Data.MySqlClient;
 using System.Data;
+using static System.Net.WebRequestMethods;
+using System.Text.Json;
 namespace Administracion_WinForms
 
 {
@@ -48,8 +50,6 @@ namespace Administracion_WinForms
             }
         }
 
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
             CargarDatos();
@@ -69,7 +69,7 @@ namespace Administracion_WinForms
 
             CargarBD();
 
-            { 
+            {
                 try
                 {
                     conn.Open();
@@ -243,17 +243,38 @@ namespace Administracion_WinForms
             EditarLosDatos();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        public class CatImage
         {
-
+            public string url { get; set; }
         }
 
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        private async void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
             // Abro la ventana de login
             Form_Login UsarVentana = new Form_Login();
             UsarVentana.ShowDialog();
             LabelUsuario.Text = Sesion.NombreUsuario;
+
+            if (Sesion.NombreUsuario == "miau")
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    try
+                    {
+                        string url = "https://api.thecatapi.com/v1/images/search";
+                        string json = await client.GetStringAsync(url);
+
+                        var cats = JsonSerializer.Deserialize<CatImage[]>(json);
+                        Perfil_Box.Load(cats[0].url);
+                        Perfil_Box.SizeMode = PictureBoxSizeMode.Zoom;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al conseguir la imagen de perfil: " + ex.Message);
+                    }
+                }
+            }
         }
 
         private void parametrosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -278,12 +299,21 @@ namespace Administracion_WinForms
             Form_ListaUsuarios UsarVentana = new Form_ListaUsuarios();
             UsarVentana.ShowDialog();
         }
+
+        private void venderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Venta UserVentana = new Form_Venta();
+            UserVentana.ShowDialog();
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
             // Cerrar sesión y limpiar los datos de sesión
             Sesion.NombreUsuario = string.Empty;
             Sesion.IdUsuario = 0;
             LabelUsuario.Text = Sesion.NombreUsuario;
+            Perfil_Box.Image = null;
+
         }
 
         private void button6_Click(object sender, EventArgs e)

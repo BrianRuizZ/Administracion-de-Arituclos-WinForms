@@ -43,21 +43,28 @@
             label6 = new Label();
             textNombre = new TextBox();
             buttonAgregarART = new Button();
-            menuStrip1 = new MenuStrip();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripMenuItem5 = new ToolStripMenuItem();
-            listaDeUsuariosToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem4 = new ToolStripMenuItem();
-            parametrosToolStripMenuItem = new ToolStripMenuItem();
             LabelUsuario = new Label();
             groupBox1 = new GroupBox();
             button5 = new Button();
             BuscarBox = new TextBox();
             button6 = new Button();
+            Perfil_Box = new PictureBox();
+            menuStrip1 = new MenuStrip();
+            venderToolStripMenuItem = new ToolStripMenuItem();
+            clientesToolStripMenuItem = new ToolStripMenuItem();
+            crearToolStripMenuItem1 = new ToolStripMenuItem();
+            edToolStripMenuItem = new ToolStripMenuItem();
+            clientesToolStripMenuItem1 = new ToolStripMenuItem();
+            usuarioToolStripMenuItem = new ToolStripMenuItem();
+            elegirToolStripMenuItem = new ToolStripMenuItem();
+            crearToolStripMenuItem = new ToolStripMenuItem();
+            usuariosToolStripMenuItem = new ToolStripMenuItem();
+            parametrosToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ArtBox.SuspendLayout();
-            menuStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Perfil_Box).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
@@ -67,7 +74,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(776, 350);
+            dataGridView1.Size = new Size(996, 420);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellDoubleClick += GridDoubleClick;
             // 
@@ -115,7 +122,7 @@
             ArtBox.FlatStyle = FlatStyle.Flat;
             ArtBox.Location = new Point(12, 108);
             ArtBox.Name = "ArtBox";
-            ArtBox.Size = new Size(776, 91);
+            ArtBox.Size = new Size(996, 91);
             ArtBox.TabIndex = 11;
             ArtBox.TabStop = false;
             ArtBox.Text = "Articulo";
@@ -123,7 +130,7 @@
             // 
             // buttonEditar
             // 
-            buttonEditar.Location = new Point(695, 58);
+            buttonEditar.Location = new Point(807, 29);
             buttonEditar.Name = "buttonEditar";
             buttonEditar.Size = new Size(75, 23);
             buttonEditar.TabIndex = 20;
@@ -134,7 +141,7 @@
             // 
             // ButtonCancelar
             // 
-            ButtonCancelar.Location = new Point(614, 58);
+            ButtonCancelar.Location = new Point(899, 28);
             ButtonCancelar.Name = "ButtonCancelar";
             ButtonCancelar.Size = new Size(75, 23);
             ButtonCancelar.TabIndex = 19;
@@ -144,7 +151,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(695, 58);
+            button1.Location = new Point(807, 29);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 18;
@@ -154,7 +161,7 @@
             // 
             // textStock
             // 
-            textStock.Location = new Point(663, 29);
+            textStock.Location = new Point(684, 29);
             textStock.Name = "textStock";
             textStock.Size = new Size(107, 23);
             textStock.TabIndex = 17;
@@ -162,7 +169,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(618, 32);
+            label4.Location = new Point(639, 33);
             label4.Name = "label4";
             label4.Size = new Size(39, 15);
             label4.TabIndex = 16;
@@ -170,7 +177,7 @@
             // 
             // textPrecio
             // 
-            textPrecio.Location = new Point(476, 29);
+            textPrecio.Location = new Point(494, 29);
             textPrecio.Name = "textPrecio";
             textPrecio.Size = new Size(136, 23);
             textPrecio.TabIndex = 15;
@@ -178,7 +185,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(427, 32);
+            label5.Location = new Point(445, 32);
             label5.Name = "label5";
             label5.Size = new Size(43, 15);
             label5.TabIndex = 14;
@@ -210,54 +217,6 @@
             buttonAgregarART.UseVisualStyleBackColor = true;
             buttonAgregarART.Click += buttonAgregarART_Click;
             // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = SystemColors.ActiveCaption;
-            menuStrip1.Font = new Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.GripMargin = new Padding(2);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, parametrosToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(798, 24);
-            menuStrip1.TabIndex = 13;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem5, listaDeUsuariosToolStripMenuItem, toolStripMenuItem4 });
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(64, 20);
-            toolStripMenuItem1.Text = "Usuario";
-            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
-            // 
-            // toolStripMenuItem5
-            // 
-            toolStripMenuItem5.Name = "toolStripMenuItem5";
-            toolStripMenuItem5.Size = new Size(190, 22);
-            toolStripMenuItem5.Text = "Elegir Usuario";
-            toolStripMenuItem5.Click += toolStripMenuItem5_Click;
-            // 
-            // listaDeUsuariosToolStripMenuItem
-            // 
-            listaDeUsuariosToolStripMenuItem.Name = "listaDeUsuariosToolStripMenuItem";
-            listaDeUsuariosToolStripMenuItem.Size = new Size(190, 22);
-            listaDeUsuariosToolStripMenuItem.Text = "Lista de Usuarios";
-            listaDeUsuariosToolStripMenuItem.Click += listaDeUsuariosToolStripMenuItem_Click;
-            // 
-            // toolStripMenuItem4
-            // 
-            toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(190, 22);
-            toolStripMenuItem4.Text = "Crear nuevo usuario";
-            toolStripMenuItem4.Click += toolStripMenuItem4_Click;
-            // 
-            // parametrosToolStripMenuItem
-            // 
-            parametrosToolStripMenuItem.Name = "parametrosToolStripMenuItem";
-            parametrosToolStripMenuItem.Size = new Size(87, 20);
-            parametrosToolStripMenuItem.Text = "Parametros";
-            parametrosToolStripMenuItem.Click += parametrosToolStripMenuItem_Click;
-            // 
             // LabelUsuario
             // 
             LabelUsuario.AutoSize = true;
@@ -272,7 +231,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(LabelUsuario);
-            groupBox1.Location = new Point(536, 29);
+            groupBox1.Location = new Point(661, 35);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(202, 51);
             groupBox1.TabIndex = 16;
@@ -281,7 +240,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(731, 36);
+            button5.Location = new Point(856, 42);
             button5.Name = "button5";
             button5.Size = new Size(57, 44);
             button5.TabIndex = 17;
@@ -306,11 +265,96 @@
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
+            // Perfil_Box
+            // 
+            Perfil_Box.Location = new Point(926, 29);
+            Perfil_Box.Name = "Perfil_Box";
+            Perfil_Box.Size = new Size(82, 71);
+            Perfil_Box.TabIndex = 24;
+            Perfil_Box.TabStop = false;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { venderToolStripMenuItem, clientesToolStripMenuItem, usuarioToolStripMenuItem, parametrosToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1020, 24);
+            menuStrip1.TabIndex = 25;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // venderToolStripMenuItem
+            // 
+            venderToolStripMenuItem.Name = "venderToolStripMenuItem";
+            venderToolStripMenuItem.Size = new Size(55, 20);
+            venderToolStripMenuItem.Text = "Vender";
+            venderToolStripMenuItem.Click += venderToolStripMenuItem_Click;
+            // 
+            // clientesToolStripMenuItem
+            // 
+            clientesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { crearToolStripMenuItem1, edToolStripMenuItem, clientesToolStripMenuItem1 });
+            clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            clientesToolStripMenuItem.Size = new Size(56, 20);
+            clientesToolStripMenuItem.Text = "Cliente";
+            // 
+            // crearToolStripMenuItem1
+            // 
+            crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
+            crearToolStripMenuItem1.Size = new Size(180, 22);
+            crearToolStripMenuItem1.Text = "Crear";
+            // 
+            // edToolStripMenuItem
+            // 
+            edToolStripMenuItem.Name = "edToolStripMenuItem";
+            edToolStripMenuItem.Size = new Size(180, 22);
+            edToolStripMenuItem.Text = "Editar";
+            // 
+            // clientesToolStripMenuItem1
+            // 
+            clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
+            clientesToolStripMenuItem1.Size = new Size(180, 22);
+            clientesToolStripMenuItem1.Text = "Clientes";
+            // 
+            // usuarioToolStripMenuItem
+            // 
+            usuarioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { elegirToolStripMenuItem, crearToolStripMenuItem, usuariosToolStripMenuItem });
+            usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
+            usuarioToolStripMenuItem.Size = new Size(59, 20);
+            usuarioToolStripMenuItem.Text = "Usuario";
+            // 
+            // elegirToolStripMenuItem
+            // 
+            elegirToolStripMenuItem.Name = "elegirToolStripMenuItem";
+            elegirToolStripMenuItem.Size = new Size(119, 22);
+            elegirToolStripMenuItem.Text = "Elegir";
+            elegirToolStripMenuItem.Click += toolStripMenuItem5_Click;
+            // 
+            // crearToolStripMenuItem
+            // 
+            crearToolStripMenuItem.Name = "crearToolStripMenuItem";
+            crearToolStripMenuItem.Size = new Size(119, 22);
+            crearToolStripMenuItem.Text = "Crear";
+            crearToolStripMenuItem.Click += toolStripMenuItem4_Click;
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            usuariosToolStripMenuItem.Size = new Size(119, 22);
+            usuariosToolStripMenuItem.Text = "Usuarios";
+            usuariosToolStripMenuItem.Click += listaDeUsuariosToolStripMenuItem_Click;
+            // 
+            // parametrosToolStripMenuItem
+            // 
+            parametrosToolStripMenuItem.Name = "parametrosToolStripMenuItem";
+            parametrosToolStripMenuItem.Size = new Size(79, 20);
+            parametrosToolStripMenuItem.Text = "Parametros";
+            parametrosToolStripMenuItem.Click += parametrosToolStripMenuItem_Click;
+            // 
             // Articulos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(798, 450);
+            ClientSize = new Size(1020, 540);
+            Controls.Add(Perfil_Box);
             Controls.Add(button6);
             Controls.Add(BuscarBox);
             Controls.Add(button5);
@@ -330,10 +374,11 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ArtBox.ResumeLayout(false);
             ArtBox.PerformLayout();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Perfil_Box).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -355,16 +400,22 @@
         private Button buttonAgregarART;
         private Button ButtonCancelar;
         private Button buttonEditar;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem toolStripMenuItem4;
-        private ToolStripMenuItem toolStripMenuItem5;
-        private ToolStripMenuItem parametrosToolStripMenuItem;
-        private ToolStripMenuItem listaDeUsuariosToolStripMenuItem;
         private Label LabelUsuario;
         private GroupBox groupBox1;
         private Button button5;
         private TextBox BuscarBox;
         private Button button6;
+        private PictureBox Perfil_Box;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem usuarioToolStripMenuItem;
+        private ToolStripMenuItem elegirToolStripMenuItem;
+        private ToolStripMenuItem crearToolStripMenuItem;
+        private ToolStripMenuItem usuariosToolStripMenuItem;
+        private ToolStripMenuItem parametrosToolStripMenuItem;
+        private ToolStripMenuItem clientesToolStripMenuItem;
+        private ToolStripMenuItem clientesToolStripMenuItem1;
+        private ToolStripMenuItem crearToolStripMenuItem1;
+        private ToolStripMenuItem edToolStripMenuItem;
+        private ToolStripMenuItem venderToolStripMenuItem;
     }
 }
