@@ -1,3 +1,5 @@
+### Versiones: [SQL: MySQL 8.3 ] , [.NET 8.0 ]
+
 Para poder usar esta app se necesita crear y configurar un archivo app.config dentro de "Administracion-de-Arituclos-WinForms
 /Administracion WinForms/" con el siguiente contenido:
 
